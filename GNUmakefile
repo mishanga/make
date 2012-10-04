@@ -60,3 +60,19 @@ full_path = $(shell pwd)/$(1) # возвращает полный путь до 
 func: $(simple)
 	$(info ==> Вызов функции)
 	$(foreach file,$^,$(info $(file): $(call full_path,$(file))))
+
+
+# Хитрые переменные
+comma := ,
+empty :=
+space := $(empty) $(empty)
+foo := a b c
+bar := $(subst $(space),$(comma),$(foo))
+
+.PHONY: hacks
+hacks:
+	$(info ==> Хитрые переменные)
+	$(info comma: '$(comma)')
+	$(info empty: '$(empty)')
+	$(info space: '$(space)')
+	$(info bar: '$(bar)')
