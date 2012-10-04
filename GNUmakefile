@@ -58,4 +58,5 @@ full_path = $(shell pwd)/$(1) # возвращает полный путь до 
 
 .PHONY: func
 func: $(simple)
+	$(info ==> Вызов функции)
 	$(foreach file,$^,$(info $(file): $(call full_path,$(file))))
