@@ -44,7 +44,7 @@ vars: $(simple)
 
 # Пример автоваров — контекстных переменных
 .PHONY: autovars
-autovars: $(foreach file,$(simple),$(call full_path,$(file)))
+autovars: $(simple)
 	$(info ==> Автовары)
 	$(info Цель: $@)
 	$(info Пререквизиты: $^)
