@@ -44,10 +44,18 @@ vars: $(simple)
 
 # Пример автоваров — контекстных переменных
 .PHONY: autovars
-autovars: $(simple)
+autovars: $(foreach file,$(simple),$(shell pwd)/$(file))
 	$(info ==> Автовары)
 	$(info Цель: $@)
 	$(info Пререквизиты: $^)
 	$(info Первый пререквизит: $<)
 	$(info Директория: $(<D))
 	$(info Имена файлов: $(^F))
+
+
+# Функции
+full_path = $(shell pwd)/$(1) # возвращает полный путь до файла
+
+.PHONY: func
+func: $(simple)
+	$(foreach file,$^,$(info $(file): $(call full_path,$(file))))
